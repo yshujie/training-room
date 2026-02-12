@@ -1,56 +1,25 @@
 package main
 
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
 func main() {
-	t := T{}
-	dumpMethodSet(t)
+	params := []float64{1, 2, 3, 4, 5} // 参数列表
 
-	prt := &T{}
-	dumpMethodSet(prt)
-
-	s := S{}
-	dumpMethodSet(s)
-
-	prs := &S{}
-	dumpMethodSet(prs)
-}
-
-type T struct{}
-
-func (t T) M1() {}
-func (t T) M2() {}
-
-func (t *T) M3() {}
-func (t *T) M4() {}
-
-type S T
-
-// dumpMethodSet 打印参数类型的方法集
-func dumpMethodSet(i interface{}) {
-	// 获取参数类型的反射类型
-	dynTyp := reflect.TypeOf(i)
-	fmt.Printf("---- start: %v ---- \n", dynTyp)
-	// 如果反射类型为 nil，则打印错误信息
-	if dynTyp == nil {
-		fmt.Println("There is no type to dump")
-		return
+	// 计算平均值
+	fmt.Println("calculate Avg result: ")
+	result, err := calculate(Avg, params...)
+	if err != nil {
+		fmt.Println("calculate error: ", err)
+	} else {
+		fmt.Println("Avg result: ", result)
 	}
 
-	// 获取反射类型的方法数量
-	numMethod := dynTyp.NumMethod()
-	if 0 == numMethod {
-		fmt.Println("There is no method of dynTyp")
-		return
+	// 计算求和
+	fmt.Println("calculate Sum result: ")
+	result, err = calculate(Sum, params...)
+	if err != nil {
+		fmt.Println("calculate error: ", err)
+	} else {
+		fmt.Println("Sum result: ", result)
 	}
-
-	// 打印方法列表
-	for i := 0; i < numMethod; i++ {
-		fmt.Printf("%v index method is %v \n", i, dynTyp.Method(i).Name)
-	}
-
-	fmt.Printf("---- end:%v ----\n", dynTyp)
 }
