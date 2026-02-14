@@ -7,7 +7,7 @@ func main() {
 
 	// 计算平均值
 	fmt.Println("calculate Avg result: ")
-	result, err := calculate(Avg, params...)
+	result, err := Calculate(Avg, params...)
 	if err != nil {
 		fmt.Println("calculate error: ", err)
 	} else {
@@ -16,7 +16,7 @@ func main() {
 
 	// 计算求和
 	fmt.Println("calculate Sum result: ")
-	result, err = calculate(Sum, params...)
+	result, err = Calculate(Sum, params...)
 	if err != nil {
 		fmt.Println("calculate error: ", err)
 	} else {
