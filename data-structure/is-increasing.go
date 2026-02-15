@@ -1,0 +1,28 @@
+package main
+
+/**
+✅ 题目：判断数组是否单调递增
+实现一个函数，判断一个数组是否是单调递增或不减的。
+
+示例
+输入：[1, 2, 2, 3] → 输出：true
+输入：[1, 3, 2] → 输出：false
+
+考点
+	•	顺序遍历 + 相邻元素比较
+	•	边界情况（空数组、单元素）
+*/
+
+func isInsceasing(a []int) bool {
+	if len(a) <= 1 {
+		return true
+	}
+
+	for i := 1; i < len(a); i++ {
+		if a[i] < a[i-1] {
+			return false
+		}
+	}
+
+	return true
+}

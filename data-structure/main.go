@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	arr := []int{3, 1, 4, 5, 2, 8} // 参数列表
+	arr := []int{1, 3, 2} // 参数列表
 
-	res, _ := findSecondlargestItem(arr)
-	fmt.Println("second largerst item : ", res)
+	res := isInsceasing(arr)
+	fmt.Println("isInsceasing?  ", res)
 }
